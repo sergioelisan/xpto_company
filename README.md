@@ -35,7 +35,7 @@ Banco de dados devidamente instalado, execute o comando para construir a imagem 
 $ ./xpto_run
 ```
 
-## IMPRIMIR RELATORIOS
+## IMPRIMIR RELATORIOS VIA REST
 
 Pode imprimir rodando os testes, ou atraves da servidor funcionando pelo docker como descrito acima.
 As URLs sao
@@ -51,6 +51,20 @@ http://localhost:8080/xpto/clientes/todos
 ```
 http://localhost:8080/xpto/receita
 ```
+
+## IMPRIMIR RELATORIOS PELOS TESTES
+
+Com o banco de dados rodando, pela sua IDE de trabalho, abra nessa ordem e execute os testes
+
+```
+InsertionTest
+
+MovimentacoesTest
+
+RelatoriosTest
+```
+
+Sendo este ultimo que imprime no console as informacoes dos relatorios
 
 ## XPTO DATABASE
 
