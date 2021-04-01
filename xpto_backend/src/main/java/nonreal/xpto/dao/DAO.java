@@ -22,8 +22,8 @@ public abstract class DAO<T> {
     public abstract List<T> list();
 
     /** */
-    public Connection getConnection() {
-        return DBConnection.getConnection();
+    public Connection getConnection(boolean localhost) {
+        return DBConnection.getConnection(localhost);
     }
 
 }

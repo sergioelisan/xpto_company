@@ -8,6 +8,12 @@ import nonreal.xpto.model.ContaBancaria;
 
 public class DAOContaBancaria extends DAO<ContaBancaria> {
 
+    public DAOContaBancaria(boolean localhost) {
+        this.localhost = localhost;
+    }
+
+    private boolean localhost;
+
     /** */
     private static final String INSERT = "INSERT INTO conta_bancaria "
             + "(proprietario_id, instituicao_financeira, agencia, saldo, saldo_inicial, criada_em, arquivada) "
@@ -24,7 +30,7 @@ public class DAOContaBancaria extends DAO<ContaBancaria> {
 
     @Override
     public Integer salvar(ContaBancaria objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             if (objeto.getId() == null)
                 try (var preparedstatement = connection.prepareStatement(INSERT, new String[] { "id" })) {
@@ -56,7 +62,7 @@ public class DAOContaBancaria extends DAO<ContaBancaria> {
 
     @Override
     public String remover(ContaBancaria objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(UPDATE)) {
                 preparedstatement.setInt(2, objeto.getProprietarioID());
@@ -76,7 +82,7 @@ public class DAOContaBancaria extends DAO<ContaBancaria> {
 
     @Override
     public ContaBancaria get(Serializable data) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(GET)) {
 

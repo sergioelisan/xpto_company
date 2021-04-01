@@ -8,6 +8,12 @@ import nonreal.xpto.model.Movimentacao;
 
 public class DAOMovimentacao extends DAO<Movimentacao> {
 
+    public DAOMovimentacao(boolean localhost) {
+        this.localhost = localhost;
+    }
+
+    private boolean localhost;
+
     /** */
     private static final String INSERT = "INSERT INTO movimentacao "
             + "(pessoa_origem_id, pessoa_destino_id, conta_origem_id, conta_destino_id, valor, realizado_em) "
@@ -21,7 +27,7 @@ public class DAOMovimentacao extends DAO<Movimentacao> {
 
     @Override
     public Integer salvar(Movimentacao objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(INSERT, new String[] { "id" })) {
 

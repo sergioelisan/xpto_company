@@ -37,7 +37,7 @@ public class XPTORestImpl implements XPTORest {
             var inicio = parser.parse(request.get("inicio"));
             var fim = parser.parse(request.get("fim"));
 
-            var result = new RelatorioSaldoClientePeriodo().printRelatorio(pessoaID, inicio, fim);
+            var result = new RelatorioSaldoClientePeriodo().printRelatorio(pessoaID, inicio, fim, false);
 
             return Response.ok(result, MediaType.TEXT_PLAIN).build();
 
@@ -57,7 +57,7 @@ public class XPTORestImpl implements XPTORest {
             var inicio = parser.parse(request.get("inicio"));
             var fim = parser.parse(request.get("fim"));
 
-            var result = new RelatorioSaldoTodosClientes().printRelatorio(inicio, fim);
+            var result = new RelatorioSaldoTodosClientes().printRelatorio(inicio, fim, false);
 
             return Response.ok(result, MediaType.TEXT_PLAIN).build();
 
@@ -77,7 +77,7 @@ public class XPTORestImpl implements XPTORest {
             var inicio = parser.parse(request.get("inicio"));
             var fim = parser.parse(request.get("fim"));
 
-            var result = new RelatorioReceitaEmpresaPeriodo().printRelatorio(inicio, fim);
+            var result = new RelatorioReceitaEmpresaPeriodo().printRelatorio(inicio, fim, false);
 
             return Response.ok(result, MediaType.TEXT_PLAIN).build();
 

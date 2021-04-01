@@ -24,7 +24,7 @@ public class RelatoriosTest extends TestCase {
         var pessoaID = 51;
 
         var relatorio = new RelatorioSaldoClientePeriodo();
-        var resultado = relatorio.printRelatorio(pessoaID, inicio, fim);
+        var resultado = relatorio.printRelatorio(pessoaID, inicio, fim, true);
 
         assertNotNull(resultado);
         System.out.println("\n");
@@ -43,7 +43,7 @@ public class RelatoriosTest extends TestCase {
         var fim = new java.sql.Date(calendar.getTime().getTime());
 
         var relatorio = new RelatorioSaldoTodosClientes();
-        var resultado = relatorio.printRelatorio(inicio, fim);
+        var resultado = relatorio.printRelatorio(inicio, fim, true);
 
         assertNotNull(resultado);
         System.out.println("\n");
@@ -62,7 +62,7 @@ public class RelatoriosTest extends TestCase {
         var fim = new java.sql.Date(calendar.getTime().getTime());
 
         var relatorio = new RelatorioReceitaEmpresaPeriodo();
-        var resultado = relatorio.printRelatorio(inicio, fim);
+        var resultado = relatorio.printRelatorio(inicio, fim, true);
 
         assertNotNull(resultado);
         System.out.println("\n");

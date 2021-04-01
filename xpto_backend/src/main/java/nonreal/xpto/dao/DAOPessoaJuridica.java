@@ -8,6 +8,12 @@ import nonreal.xpto.model.PessoaJuridica;
 
 public class DAOPessoaJuridica extends DAO<PessoaJuridica> {
 
+    public DAOPessoaJuridica(boolean localhost) {
+        this.localhost = localhost;
+    }
+
+    private boolean localhost;
+
     /** */
     private static final String INSERT = "INSERT INTO pessoa "
             + "(nome, endereco_id, cnp, pessoa_juridica, cadastrada_em, arquivada) VALUES (?, ?, ?, ?, ?, ?)";
@@ -26,7 +32,7 @@ public class DAOPessoaJuridica extends DAO<PessoaJuridica> {
 
     @Override
     public Integer salvar(PessoaJuridica objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
             try (var preparedstatement = connection.prepareStatement(INSERT, new String[] { "id" })) {
 
                 preparedstatement.setString(1, objeto.getNome());
@@ -56,7 +62,7 @@ public class DAOPessoaJuridica extends DAO<PessoaJuridica> {
 
     @Override
     public String remover(PessoaJuridica objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(DELETE)) {
                 preparedstatement.setInt(2, objeto.getId());
@@ -76,7 +82,7 @@ public class DAOPessoaJuridica extends DAO<PessoaJuridica> {
 
     @Override
     public PessoaJuridica get(Serializable data) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(GET)) {
                 preparedstatement.setString(1, (String) data);

@@ -9,6 +9,12 @@ import nonreal.xpto.model.PessoaFisica;
 
 public class DAOPessoaFisica extends DAO<PessoaFisica> {
 
+    public DAOPessoaFisica(boolean localhost) {
+        this.localhost = localhost;
+    }
+
+    private boolean localhost;
+
     /** */
     private static final String INSERT = "INSERT INTO pessoa "
             + "(nome, endereco_id, cnp, pessoa_juridica, cadastrada_em, arquivada) VALUES (?, ?, ?, ?, ?, ?)";
@@ -27,7 +33,7 @@ public class DAOPessoaFisica extends DAO<PessoaFisica> {
 
     @Override
     public Integer salvar(PessoaFisica objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
             try (var preparedstatement = connection.prepareStatement(INSERT, new String[] { "id" })) {
 
                 preparedstatement.setString(1, objeto.getNome());
@@ -57,7 +63,7 @@ public class DAOPessoaFisica extends DAO<PessoaFisica> {
 
     @Override
     public String remover(PessoaFisica objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(DELETE)) {
                 preparedstatement.setInt(2, objeto.getId());
@@ -76,7 +82,7 @@ public class DAOPessoaFisica extends DAO<PessoaFisica> {
 
     @Override
     public PessoaFisica get(Serializable data) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(GET)) {
 
@@ -110,7 +116,7 @@ public class DAOPessoaFisica extends DAO<PessoaFisica> {
     public List<PessoaFisica> list() {
         var pessoas = new ArrayList<PessoaFisica>();
 
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(LIST)) {
 

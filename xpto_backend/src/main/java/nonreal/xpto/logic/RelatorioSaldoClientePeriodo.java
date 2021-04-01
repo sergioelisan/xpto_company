@@ -8,10 +8,10 @@ import nonreal.xpto.util.DBConnection;
 
 public class RelatorioSaldoClientePeriodo {
 
-    public String printRelatorio(Integer pessoaID, Date inicio, Date fim) {
+    public String printRelatorio(Integer pessoaID, Date inicio, Date fim, boolean localhost) {
         try {
             var call = "{? = call relatorio_cliente_periodo (?, ?, ?)}";
-            var cstmt = DBConnection.getConnection().prepareCall(call);
+            var cstmt = DBConnection.getConnection(localhost).prepareCall(call);
 
             cstmt.registerOutParameter(1, Types.VARCHAR);
 

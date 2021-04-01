@@ -13,10 +13,10 @@ import nonreal.xpto.model.PessoaJuridica;
 public class MovimentacoesTest extends TestCase {
 
     public void testMovimentacoes() {
-        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class);
-        var daocontabancaria = DAOFactory.getDAO(ContaBancaria.class);
-        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class);
-        var daomovimentacoes = DAOFactory.getDAO(Movimentacao.class);
+        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class, true);
+        var daocontabancaria = DAOFactory.getDAO(ContaBancaria.class, true);
+        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class, true);
+        var daomovimentacoes = DAOFactory.getDAO(Movimentacao.class, true);
 
         var pessoa1 = daopessoafisica.get("211.957.313-10");
         assertNotNull(pessoa1);

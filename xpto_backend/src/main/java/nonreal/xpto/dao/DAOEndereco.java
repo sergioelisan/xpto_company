@@ -8,6 +8,12 @@ import nonreal.xpto.model.Endereco;
 
 public class DAOEndereco extends DAO<Endereco> {
 
+    public DAOEndereco(boolean localhost) {
+        this.localhost = localhost;
+    }
+
+    private boolean localhost;
+
     /** */
     private static final String INSERT = "INSERT INTO endereco "
             + "(logradouro, complemento, numero, cep, distrito, cidade, estado) " + "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -23,7 +29,7 @@ public class DAOEndereco extends DAO<Endereco> {
 
     @Override
     public Integer salvar(Endereco objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
             try (var preparedstatement = connection.prepareStatement(INSERT, new String[] { "id" })) {
                 preparedstatement.setString(1, objeto.getLogradouro());
                 preparedstatement.setString(2, objeto.getComplemento());
@@ -53,7 +59,7 @@ public class DAOEndereco extends DAO<Endereco> {
 
     @Override
     public String remover(Endereco objeto) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(DELETE)) {
                 preparedstatement.setInt(1, objeto.getId());
@@ -71,7 +77,7 @@ public class DAOEndereco extends DAO<Endereco> {
 
     @Override
     public Endereco get(Serializable data) {
-        try (var connection = getConnection()) {
+        try (var connection = getConnection(localhost)) {
 
             try (var preparedstatement = connection.prepareStatement(GET)) {
 

@@ -14,9 +14,9 @@ public class InsertionTest extends TestCase {
 
     /** */
     public void testInserirPessoa() {
-        var daoendereco = DAOFactory.getDAO(Endereco.class);
-        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class);
-        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class);
+        var daoendereco = DAOFactory.getDAO(Endereco.class, true);
+        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class, true);
+        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class, true);
 
         var endereco1 = new Endereco();
         endereco1.setLogradouro("Rua da Guia");
@@ -71,9 +71,9 @@ public class InsertionTest extends TestCase {
 
     /** */
     public void testInserirContaBancaria() {
-        var daocontabancaria = DAOFactory.getDAO(ContaBancaria.class);
-        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class);
-        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class);
+        var daocontabancaria = DAOFactory.getDAO(ContaBancaria.class, true);
+        var daopessoafisica = DAOFactory.getDAO(PessoaFisica.class, true);
+        var daopessoajuridica = DAOFactory.getDAO(PessoaJuridica.class, true);
 
         var pessoa1 = daopessoafisica.get("211.957.313-10");
         assertNotNull(pessoa1);
