@@ -21,7 +21,7 @@ BEGIN
     r_movimentacoes_credito := movimentacoes_credito_cliente(pessoa_id, inicio, fim);
     r_movimentacoes_debito  := movimentacoes_debito_cliente(pessoa_id, inicio, fim);
     r_saldo_inicial         := saldo_inicial_cliente(pessoa_id);
-    r_saldo_atual           := r_saldo_inicial + (r_movimentacoes_credito - r_movimentacoes_debito);
+    r_saldo_atual           := r_saldo_inicial + r_movimentacoes_credito - r_movimentacoes_debito;
     r_endereco              := obter_endereco(r_endereco_id);
     -- 
     SELECT SUM(valor) INTO r_taxas FROM taxa 
@@ -40,7 +40,7 @@ BEGIN
         'Total de movimentações: '          || TO_CHAR(r_movimentacoes) || (chr(13)||chr(10)) ||
         'Valor pago pelas movimentações: '  || TO_CHAR(r_taxas) || (chr(13)||chr(10)) ||
         'Saldo inicial: '                   || TO_CHAR(r_saldo_inicial) || (chr(13)||chr(10)) ||
-        'Saldo atual: '                     || TO_CHAR(r_saldo_atual)
+        'Saldo atual: '                     || TO_CHAR(r_saldo_atual)  || ' '
     );
 END;
 /

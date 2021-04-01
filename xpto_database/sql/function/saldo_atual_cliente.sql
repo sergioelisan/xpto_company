@@ -10,6 +10,6 @@ BEGIN
     r_saldoinicial := saldo_inicial_cliente(pessoa_id);
     r_movimentacoes_credito := movimentacoes_credito_cliente(pessoa_id, inicio, fim);
     r_movimentacoes_debito  := movimentacoes_debito_cliente(pessoa_id, inicio, fim);
-    RETURN r_saldoinicial + (r_movimentacoes_credito - r_movimentacoes_debito);
+    RETURN r_saldoinicial + r_movimentacoes_credito - r_movimentacoes_debito;
 END;
 /

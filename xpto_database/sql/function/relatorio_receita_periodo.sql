@@ -29,7 +29,7 @@ BEGIN
     SELECT SUM(valor) INTO c_taxas FROM taxa 
         WHERE taxa.cobrada_em >= inicio
         AND taxa.cobrada_em < fim;
-    result := result || 'Total de receitas com taxas: R$ ' || TO_CHAR(c_taxas) || (chr(13)||chr(10));
+    result := result || 'Total de receitas com taxas: R$ ' || TO_CHAR(c_taxas)  || ' ';
     --
     RETURN result;
 END;

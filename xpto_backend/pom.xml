@@ -8,9 +8,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.release>15</maven.compiler.release>
-        <jvm.a>-XX:+UnlockExperimentalVMOptions</jvm.a>
-        <jvm.a>-XX:+UseJVMCICompiler</jvm.a>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <build>
@@ -51,16 +49,12 @@
                     <imageName>xpto/backend</imageName>
                     <imageTags>latest</imageTags>
                     <baseImage>adoptopenjdk/openjdk15:alpine-slim</baseImage>
-                    <entryPoint>["java", "-jar", "${jvm.a}", "${jvm.b}", "/${project.artifactId}-${project.version}-jar-with-dependencies.jar"]</entryPoint>
+                    <entryPoint>["java", "-jar", "/${project.artifactId}-${project.version}-jar-with-dependencies.jar"]</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
                             <directory>${project.build.directory}</directory>
                             <include>${project.artifactId}-${project.version}-jar-with-dependencies.jar</include>
-                        </resource>
-                        <resource>
-                            <targetPath>/static</targetPath>
-                            <directory>static</directory>
                         </resource>
                     </resources>
                 </configuration>
@@ -107,6 +101,21 @@
 
         <!-- Jetty -->
         <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-api</artifactId>
+            <version>9.4.39.v20210325</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-server</artifactId>
+            <version>9.4.39.v20210325</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty.websocket</groupId>
+            <artifactId>websocket-client</artifactId>
+            <version>9.4.39.v20210325</version>
+        </dependency>
+        <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
             <version>9.4.39.v20210325</version>
@@ -114,12 +123,12 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlet</artifactId>
-            <version>9.4.28.v20200408</version>
+            <version>9.4.39.v20210325</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-servlets</artifactId>
-            <version>9.4.28.v20200408</version>
+            <version>9.4.39.v20210325</version>
         </dependency>
 
         <!-- Jersey -->

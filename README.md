@@ -35,6 +35,23 @@ Banco de dados devidamente instalado, execute o comando para construir a imagem 
 $ ./xpto_run
 ```
 
+## IMPRIMIR RELATORIOS
+
+Pode imprimir rodando os testes, ou atraves da servidor funcionando pelo docker como descrito acima.
+As URLs sao
+
+```
+http://localhost:8080/xpto/clientes
+```
+
+```
+http://localhost:8080/xpto/clientes/todos
+```
+
+```
+http://localhost:8080/xpto/receita
+```
+
 ## XPTO DATABASE
 
 - **xpto_database/**  

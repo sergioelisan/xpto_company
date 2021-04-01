@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
 /**
  * @author sergio lisan <sergiolisan@gmail.com>
  */
-@ApplicationPath("/")
+@ApplicationPath("/xpto")
 public class XPTORESTfulAPI extends Application {
 
     public Set<Class<?>> getClasses() {

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+PWD=`pwd`
+
+docker stop xpto_backend
+docker rm xpto_backend
+
+cd xpto_backend
+./build
+
+docker run --name xpto_backend \
+    -e MODE=--dev \
+    -p 8080:8080 -p 80:8080 \
+    --restart=on-failure:64 \
+    -d xpto/backend:latest

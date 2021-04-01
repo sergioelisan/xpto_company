@@ -21,6 +21,11 @@ import nonreal.xpto.logic.RelatorioSaldoTodosClientes;
 public class XPTORestImpl implements XPTORest {
 
     @Override
+    public Response echo() {
+        return Response.ok("ECHO RESPONDIDO", MediaType.TEXT_PLAIN).build();
+    }
+
+    @Override
     public Response clientes(String body) {
         try {
             Map<String, String> request = new Gson().fromJson(body, new TypeToken<Map<String, String>>() {

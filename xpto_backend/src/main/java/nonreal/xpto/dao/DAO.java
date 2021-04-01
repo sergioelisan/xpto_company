@@ -22,7 +22,7 @@ public abstract class DAO<T> {
     public abstract List<T> list();
 
     /** */
-    protected Connection getConnection() {
+    public Connection getConnection() {
         return DBConnection.getConnection();
     }
 

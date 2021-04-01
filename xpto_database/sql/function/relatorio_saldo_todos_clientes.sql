@@ -16,7 +16,7 @@ BEGIN
         c_saldo := saldo_atual_cliente(c_id, inicio, fim);
         result  := result || 'Cliente: ' || c_nome || ' - Cliente desde: ' || 
             TO_CHAR(c_cadastrada_em) || ' – Saldo em ' || TO_CHAR(fim) || ': ' ||
-            TO_CHAR(c_saldo) || (chr(13)||chr(10)); 
+            TO_CHAR(c_saldo) || ' '; 
     END LOOP;
     CLOSE c_pessoas;
     RETURN result;
