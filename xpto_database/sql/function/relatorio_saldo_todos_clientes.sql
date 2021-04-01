@@ -3,11 +3,11 @@
 CREATE OR REPLACE FUNCTION relatorio_saldo_todos_clientes(inicio DATE, fim DATE)
 RETURN VARCHAR2 IS
     CURSOR c_pessoas is SELECT id, nome, cadastrada_em FROM pessoa;
-    c_id                NUMBER; 
-    c_nome              VARCHAR2 (48); 
-    c_cadastrada_em     DATE; 
-    c_saldo             NUMBER(10,2);
-    result              VARCHAR2 (4000) := '';
+    c_id NUMBER; 
+    c_nome VARCHAR2 (48); 
+    c_cadastrada_em DATE; 
+    c_saldo NUMBER(10,2);
+    result VARCHAR2 (4000) := '';
 BEGIN 
     OPEN c_pessoas; 
     LOOP 

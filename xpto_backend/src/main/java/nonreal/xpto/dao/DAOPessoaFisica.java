@@ -2,6 +2,7 @@ package nonreal.xpto.dao;
 
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import nonreal.xpto.model.PessoaFisica;
@@ -107,8 +108,34 @@ public class DAOPessoaFisica extends DAO<PessoaFisica> {
 
     @Override
     public List<PessoaFisica> list() {
+        var pessoas = new ArrayList<PessoaFisica>();
 
-        return null;
+        try (var connection = getConnection()) {
+
+            try (var preparedstatement = connection.prepareStatement(LIST)) {
+
+                try (var result = preparedstatement.executeQuery()) {
+
+                    while (result.next()) {
+                        var found = new PessoaFisica();
+                        found.setId((int) result.getLong(1));
+                        found.setNome(result.getString(2));
+                        found.setEnderecoID(result.getInt(3));
+                        found.setCpf(result.getString(4));
+                        found.setCadastradaEm(result.getDate(6));
+
+                        pessoas.add(found);
+                    }
+                }
+            }
+        }
+        //
+        catch (SQLException e) {
+            System.out.println("[XPTO-BACKEND] [DAOPESSOAFISICA] [GET] Erro no SQL");
+            e.printStackTrace();
+        }
+
+        return pessoas;
     }
 
 }

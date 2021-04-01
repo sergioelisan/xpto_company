@@ -2,17 +2,17 @@
 --
 CREATE OR REPLACE FUNCTION relatorio_cliente_periodo(pessoa_id NUMBER, inicio DATE, fim DATE)
 RETURN VARCHAR2 IS
-    r_cliente                 VARCHAR (48);
-    r_cliente_desde           DATE;
-    r_endereco                VARCHAR2 (128);
-    r_movimentacoes_credito   NUMBER (10, 2);
-    r_movimentacoes_debito    NUMBER (10, 2);
-    r_movimentacoes           NUMBER (10, 2);
-    r_taxas                   NUMBER (10, 2);
-    r_saldo_inicial           NUMBER (10, 2);
-    r_saldo_atual             NUMBER (10, 2);
-    r_endereco_id             NUMBER;
-    result                    VARCHAR (1000);
+    r_cliente VARCHAR (48);
+    r_cliente_desde DATE;
+    r_endereco VARCHAR2 (128);
+    r_movimentacoes_credito NUMBER (10, 2);
+    r_movimentacoes_debito NUMBER (10, 2);
+    r_movimentacoes NUMBER (10, 2);
+    r_taxas NUMBER (10, 2);
+    r_saldo_inicial NUMBER (10, 2);
+    r_saldo_atual NUMBER (10, 2);
+    r_endereco_id NUMBER;
+    result VARCHAR (1000);
 BEGIN 
     --
     SELECT nome, endereco_id, cadastrada_em INTO r_cliente, r_endereco_id, r_cliente_desde 

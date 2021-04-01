@@ -3,12 +3,12 @@
 CREATE OR REPLACE FUNCTION relatorio_receita_periodo(inicio DATE, fim DATE)
 RETURN VARCHAR2 IS
     CURSOR c_pessoas is SELECT id, nome FROM pessoa;
-    c_id                NUMBER; 
-    c_nome              VARCHAR2 (48); 
-    c_movimentacoes     NUMBER; 
-    c_saldo             NUMBER(10,2);
-    c_taxas             NUMBER(10,2);
-    result              VARCHAR2 (4000) := 'Período: '|| TO_CHAR(inicio) || ' a ' || TO_CHAR(fim) || (chr(13)||chr(10));
+    c_id NUMBER; 
+    c_nome VARCHAR2 (48); 
+    c_movimentacoes NUMBER; 
+    c_saldo NUMBER(10,2);
+    c_taxas NUMBER(10,2);
+    result VARCHAR2 (4000) := 'Período: '|| TO_CHAR(inicio) || ' a ' || TO_CHAR(fim) || (chr(13)||chr(10));
 BEGIN 
     OPEN c_pessoas; 
     LOOP 
