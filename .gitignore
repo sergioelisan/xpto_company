@@ -1,0 +1,13 @@
+.vscode
+.metadata
+*.iml
+.DS_Store
+
+xpto_database/data
+
+xpto_backend/build/
+xpto_backend/target/
+xpto_backend/.idea/
+xpto_backend/.settings/
+xpto_backend/.classpath
+xpto_backend/.project

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# 
+mvn -T 1.5C clean install -Dmaven.test.skip=true
+cd target/
+mvn install:install-file -Dfile=xpto-backend-1.0.0.jar -DgroupId=nonreal.xpto -DartifactId=xpto-backend -Dversion=1.0.0 -Dpackaging=jar

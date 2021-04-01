@@ -1,0 +1,22 @@
+#!/bin/sh
+
+DATA_DIR=`pwd`/xpto_database/data
+
+if docker ps | grep -q xpto_database
+then 
+    docker stop xpto_database
+    docker rm xpto_database
+else
+    docker rm xpto_database
+fi
+
+docker run --name xpto_database \
+    -d \
+    -p 51521:1521 \
+    -p 55500:5500 \
+    -e ORACLE_PWD=12345678 \
+    -e ORACLE_CHARACTERSET=AL32UTF8 \
+    -v $DATA_DIR:/opt/oracle/oradata \
+    oracle/database:18.4.0-xe
+
+# docker exec xpto_database ./setPassword.sh 12345678

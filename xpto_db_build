@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd xpto_database/docker
+docker build -t oracle/database:18.4.0-xe -f Dockerfile.xe .
+
+STARTUP_DIR=`pwd`/xpto_database/startup
+DATA_DIR=`pwd`/xpto_database/data
+
+mkdir STARTUP_DIR
+mkdir DATA_DIR
+
+chmod 777 $STARTUP_DIR
+chmod 777 $DATA_DIR
+
+./xpto_db_run
+docker logs -f xpto_database
